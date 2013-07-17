@@ -1,0 +1,34 @@
+<?php $note = $this->get("note"); ?>
+<form action="<?php echo Link::url("game/".SID."/notepad.index/delete/".$note->get("note_id")) ?>" method="post">
+	<table class="ntable">
+		<thead>
+			<tr>
+				<th>
+					<?php echo $note->get("title") ?>
+				</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td class="right">
+					<button type="button" class="button" onclick="location.href = '<?php echo Link::url("game/".SID."/notepad.index") ?>'">
+						{lang=BACK}
+					</button>
+					<button type="button" class="button" onclick="location.href = '<?php echo Link::url("game/".SID."/notepad.index/edit/".$note->get("note_id")) ?>'">
+						{lang=EDIT}
+					</button>
+					<button type="submit" class="button">
+						{lang=DELETE}
+					</button>
+				</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>
+					<?php echo $note->getNoteText() ?>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

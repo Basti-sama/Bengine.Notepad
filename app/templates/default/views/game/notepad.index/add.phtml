@@ -1,0 +1,55 @@
+<?php $note = $this->get("note") ?>
+<script type="text/javascript" src="{const=BASE_URL}js/lib/tiny_mce/tiny_mce_gzip.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+tinyMCE_GZ.init({
+language:"{@langcode}",theme:"advanced",plugins:"emotions",disk_cache:true,debug:false
+});
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+tinyMCE.init({
+language:"{@langcode}",forced_root_block:"div",skin:"message",mode:"exact",elements:"note_text",theme:"advanced",theme_advanced_toolbar_location:"top",theme_advanced_toolbar_align:"left",theme_advanced_disable:"anchor,styleselect",width:436,height:250,plugins:"emotions",theme_advanced_buttons1_add:"forecolor,backcolor",theme_advanced_buttons3_add:"emotions",relative_urls:false,remove_script_host:false
+});
+//]]>
+</script>
+<form action="{@formAction}" method="post">
+	<table class="ntable">
+		<thead>
+			<tr>
+				<th colspan="2">{lang=CREATE}</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="2" class="center">
+					<button type="button" class="button" onclick="location.href = '<?php echo Link::url("game/".SID."/notepad.index") ?>'">{lang=CANCEL}</button>
+					<button type="submit" class="button">{lang=SAVE}</button>
+				</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>
+					<label for="note_title">{lang=SUBJECT}</label>
+				</td>
+				<td>
+					<input type="text" name="title" id="note_title" value="<?php echo $note->get("title") ?>"/>
+					{@titleError}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="note_text">{lang=NOTE_TEXT}</label>
+				</td>
+				<td>
+					<textarea rows="5" cols="50" name="note_text" id="note_text">
+						<?php echo $note->get("note_text") ?>
+					</textarea>
+					{@noteTextError}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

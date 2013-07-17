@@ -1,0 +1,28 @@
+{
+	"packages": {
+		"bengine": {
+			"notepad": {
+				"type": "module",
+				"name": "Notepad",
+				"version": "0.1.0",
+				"revision": 10,
+				"pool": "ext/modules"
+			}
+		}
+	},
+	"config": {
+		"menu": {
+			"other": {
+				"items": {
+					"notepad": {
+						"label": "MENU_NOTEPAD",
+						"sort": 220,
+						"link": {
+							"controller": "notepad.index"
+						}
+					}
+				}
+			}
+		}
+	}
+}
